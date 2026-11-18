@@ -1,0 +1,16 @@
+.home-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.home-bottom .restart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background: var(--n3);
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+}

@@ -1,0 +1,16 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 75rem;
+}
+
+.separator > :not(:last-child) {
+  border-right: 1px solid var(--n2);
+  padding-right: 1rem;
+}
+
+.separator > :not(:first-child) {
+  padding-left: 1rem;
+}

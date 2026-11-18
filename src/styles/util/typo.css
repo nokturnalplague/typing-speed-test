@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Sora;
+  src: url('../../fonts/Sora/Sora-VariableFont_wght.ttf');
+  font-weight: 400 600 700;
+}
+
+:root {
+  --main-font: 'Sora', Arial, Helvetica, sans-serif;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.medium {
+  font-weight: 600;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.xl {
+  font-family: var(--main-font);
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+.l {
+  font-family: var(--main-font);
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.m {
+  font-family: var(--main-font);
+  font-size: 1.125rem;
+  line-height: 1.33;
+}
+
+.s {
+  font-family: var(--main-font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1200px) {
+  .l {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .xl {
+    font-size: 1.5rem;
+  }
+}

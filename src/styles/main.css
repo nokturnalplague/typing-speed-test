@@ -1,0 +1,12 @@
+/* GLOBAL & UTILITIES */
+@import url('./util/colors.css');
+@import url('./util/typo.css');
+@import url('./global/global.css');
+@import url('./util/components.css');
+@import url('./global/header.css');
+@import url('./global/footer.css');
+
+/* HOME */
+@import url('./home/top.css');
+@import url('./home/main.css');
+@import url('./home/bottom.css');
