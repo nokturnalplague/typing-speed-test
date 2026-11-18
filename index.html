@@ -35,25 +35,29 @@
         <div class="difficulty">
           <span class="regular s n1">Difficulty:</span>
           <ul>
-            <li class="regular s n0" id="easy">Easy</li>
-            <li class="regular s n0" id="medium">Medium</li>
-            <li class="regular s n0" id="hard">Hard</li>
+            <li class="regular s n0 active" id="easy" tabindex="0">Easy</li>
+            <li class="regular s n0" id="medium" tabindex="0">Medium</li>
+            <li class="regular s n0" id="hard" tabindex="0">Hard</li>
           </ul>
         </div>
         <div class="mode">
           <span class="regular s n1">Mode:</span>
           <ul>
-            <li class="regular s n0" id="60s">Timed (60s)</li>
-            <li class="regular s n0" id="pass">Passage</li>
+            <li class="regular s n0 active" id="60s" tabindex="0">Timed (60s)</li>
+            <li class="regular s n0" id="pass" tabindex="0">Passage</li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="main-home">
+    <div class="main-home pending">
       <p class="regular l n1" id="text">The sun rose over the quiet town. Birds sang in the trees as people woke up and started their day. It was going to be a warm and sunny morning.</p>
-    </div>
-    <div class="home-bottom">
-      <span class="restart medium m n0">Restart Test <img src="./src/pictures/icon-restart.svg"></span>
+      <div class="home-bottom">
+        <span class="button-1 medium m n0">Restart Test <img src="./src/pictures/icon-restart.svg"></span>
+      </div>
+      <div class="pending-content">
+        <button class="button-3 medium m n0">Start Typing Test</button>
+        <span class="medium m n0">Or click the text and start typing</span>
+      </div>
     </div>
   </main>
   <footer class="footer">

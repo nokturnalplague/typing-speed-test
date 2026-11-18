@@ -34,3 +34,7 @@ img {
   display: block;
   height: auto;
 }
+
+button {
+  border: none;
+}

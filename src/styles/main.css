@@ -8,5 +8,4 @@
 
 /* HOME */
 @import url('./home/top.css');
-@import url('./home/main.css');
-@import url('./home/bottom.css');
+@import url('./home/home.css');

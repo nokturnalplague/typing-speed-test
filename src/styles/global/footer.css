@@ -17,3 +17,8 @@
   color: var(--n0);
   border-bottom: 1px solid var(--n1);
 }
+
+.footer a:focus {
+  outline: none;
+  border-bottom: 1px solid var(--n1);
+}

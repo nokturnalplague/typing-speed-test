@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
+  width: 100%;
   border-bottom: 1px solid var(--n2);
   padding-bottom: 0.75rem;
 }
@@ -38,4 +39,20 @@
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--n0);
   border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.settings div ul li.active {
+  color: var(--p1);
+  border-color: var(--p1);
+}
+
+.settings div ul li:hover {
+  color: var(--p2);
+  border-color: var(--p2);
+}
+
+.settings div ul li:focus {
+  outline: 2px solid var(--p2);
+  outline-offset: 3px;
 }
