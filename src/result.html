@@ -14,7 +14,7 @@
   <script type="module" src="./scripts/main.js" defer></script>
 </head>
 
-<body id="results">
+<body id="new-personal-best">
   <header class="header container">
     <div class="logo">
       <img src="./pictures/logo-large.svg" alt="Typing Speed Test" width="267" height="40">
@@ -24,8 +24,24 @@
       <span class="regular s n1">Personal Best: <span class="regular s n0" id="best">92 WPM</span></span>
     </div>
   </header>
-  <main class="container">
-
+  <main class="container result stars">
+    <div class="result-content">
+      
+      <img src="./pictures/icon-completed.svg" width="64" height="64">
+      <div class="text">
+        <h1 class="bold xl n0">Test Complete!</h1>
+        <p class="regular m n1">Solid run. Keep pushing to beat your high score.</p>
+      </div>
+      <div class="stats">
+        <ul>
+          <li class="regular m n1">WPM: <span class="medium l n0" id="wpm">85</span></li>
+          <li class="regular m n1">Accuracy: <span class="medium l n0" id="acc">90%</span></li>
+          <li class="regular m n1">Characters: <span class="medium l n0"><span class="n0" id="right">120</span>/<span class="n0" id="wrong">5</span></span></li>
+        </ul>
+      </div>
+      <span class="button-2 medium m n4" tabindex="0">Go Again<img src="./pictures/icon-restart.svg"></span>
+    </div>
+    <div></div>
   </main>
   <footer class="footer">
     <span class="regular s n1">Desenvolvido por <a href="https://www.linkedin.com/in/nathalia-dagort-ferlin/">Nathália Dagort Ferlin</a>.</span>

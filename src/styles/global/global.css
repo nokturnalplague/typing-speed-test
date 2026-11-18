@@ -6,6 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  container-type: inline-size;
 }
 
 h1,
@@ -43,6 +44,7 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   width: 100%;

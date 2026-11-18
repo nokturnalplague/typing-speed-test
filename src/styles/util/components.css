@@ -26,6 +26,39 @@
   cursor: pointer;
 }
 
+.button-1:hover {
+  background: var(--n2);
+}
+
+.button-1:focus {
+  outline: 2px solid var(--n2);
+  outline-offset: 3px;
+}
+
+.button-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--n0);
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.button-2 img {
+  filter: brightness(0);
+}
+
+.button-2:hover {
+  background: var(--n1);
+}
+
+.button-2:focus {
+  outline: 2px solid var(--n0);
+  outline-offset: 3px;
+}
+
 .button-3 {
   display: flex;
   align-items: center;
@@ -40,11 +73,93 @@
 .button-3:hover {
   background: var(--p1);
 }
-:focus {
-  outline: 2px solid var(--p2);
-  outline-offset: 3px;
-}
+
 .button-3:focus {
   outline: 2px solid var(--p2);
   outline-offset: 3px;
+}
+
+.result {
+  height: auto;
+  display: grid;
+  grid-template-rows: 75fr 25fr;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.result .text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.result .stats ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.result .stats ul li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--n3);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.result > div:last-child {
+  height: auto;
+}
+
+.result div img[src$='icon-completed.svg'] {
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 0.75rem #4dd67b80,
+    0 0 0 1.5rem #4dd67b40;
+    margin: 1.5rem;
+}
+
+.result.confetti > div:last-child {
+  width: 100cqw;
+  box-sizing: border-box;
+  align-self: stretch;
+  background: url('../../pictures/pattern-confetti.svg') center / cover
+    no-repeat;
+}
+
+.result.stars > div:first-child::before {
+  content: url('../../pictures/pattern-star-2.svg');
+  display: block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 8rem;
+  left: 0;
+}
+
+.result.stars > div:first-child::after {
+  content: url('../../pictures/pattern-star-1.svg');
+  display: block;
+  width: 74px;
+  height: 74px;
+  position: absolute;
+  bottom: 10rem;
+  right: 0;
 }

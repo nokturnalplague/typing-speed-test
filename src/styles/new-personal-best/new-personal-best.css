@@ -1,8 +1,0 @@
-#home main {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 100%;
-}
