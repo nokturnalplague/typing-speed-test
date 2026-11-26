@@ -128,12 +128,20 @@
   height: auto;
 }
 
+.result div img[src$='icon-error.svg'] {
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 0.75rem #d64c5a80,
+    0 0 0 1.5rem #d64c5a40;
+  margin: 1.5rem;
+}
+
 .result div img[src$='icon-completed.svg'] {
   border-radius: 50%;
   box-shadow:
-    0 0 0 0.75rem #4dd67b80,
-    0 0 0 1.5rem #4dd67b40;
-    margin: 1.5rem;
+    0 0 0 0.75rem #4cd67a80,
+    0 0 0 1.5rem #4cd67a40;
+  margin: 1.5rem;
 }
 
 .result.confetti > div:last-child {
