@@ -1,12 +1,5 @@
 import { changeMain } from './changeMain.js';
 
-let best, wpm, acc;
-
-const bestEl = document.querySelector('#best');
-bestEl.innerText = best ? `${best} WPM` : '-- WPM';
-
-/* TEXT */
-
 async function getData() {
   try {
     const response = await fetch(new URL('../data/data.json', import.meta.url));
@@ -18,12 +11,25 @@ async function getData() {
     return await response.json();
   } catch (err) {
     console.log(err);
+    return null;
   }
 }
 
-const data = await getData();
+export async function initialLoad() {
+  const data = await getData();
 
-if (data) {
+  if (!data) {
+    changeMain('err');
+    return false;
+  }
+
+  let best, wpm, acc;
+
+  const bestEl = document.querySelector('#best');
+  bestEl.innerText = best ? `${best} WPM` : '-- WPM';
+
+  /* TEXT */
+
   const textEl = document.querySelector('#text');
 
   function updateText(id) {
@@ -33,6 +39,8 @@ if (data) {
 
     const text = passages[number].text;
     textEl.innerText = text;
+    // !!
+    // textEl.innerText = 'agape'
   }
 
   /* STATS */
@@ -78,6 +86,6 @@ if (data) {
 
   settingsActive(difficulties, updateText);
   settingsActive(modes, updateTime);
-} else {
-  changeMain('err');
+
+  return true;
 }
