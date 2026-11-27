@@ -1,25 +1,21 @@
 .header {
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: space-between;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  height: 18px;
+  padding-block: 1.5rem;
+  height: auto;
   position: sticky;
   top: 0;
   left: 0;
-  width: 100dvw;
+  width: 100%;
+  box-sizing: border-box;
   z-index: 999;
-}
-
-#home .header {
-  margin-bottom: -2rem;
 }
 
 .header .best {
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: center;
   gap: 0.5rem;

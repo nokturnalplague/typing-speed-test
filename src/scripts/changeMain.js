@@ -23,7 +23,7 @@ export function changeMain(page) {
 
   const icon = document.createElement('img');
 
-  icon.alt = ""
+  icon.alt = '';
   icon.addEventListener('load', () => {
     icon.width = icon.naturalWidth;
     icon.height = icon.naturalHeight;
@@ -92,7 +92,7 @@ export function changeMain(page) {
   button.classList.add('button-2', 'medium', 'm', 'n4');
 
   const buttonImg = document.createElement('img');
-  buttonImg.alt = ""
+  buttonImg.alt = '';
   buttonImg.src = './src/pictures/icon-restart.svg';
 
   if (page === 'err' || page === 'rslt') {

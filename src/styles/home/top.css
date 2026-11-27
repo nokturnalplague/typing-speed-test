@@ -1,6 +1,6 @@
-.home-top {
+.top {
   display: flex;
-  flex-direction: row;
+
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
@@ -8,20 +8,20 @@
   padding-bottom: 0.75rem;
 }
 
-.home-top .stats span > span {
+.top .stats span > span {
   margin-left: 0.5rem;
 }
 
-.home-top .settings {
+.top .settings {
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: center;
 }
 
-.home-top .settings > div {
+.top .settings > div {
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
@@ -29,13 +29,18 @@
 
 .settings div ul {
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.settings div ul li label {
+.settings input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+}
+
+.settings label {
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--n0);
   color: var(--n0);
@@ -43,17 +48,17 @@
   cursor: pointer;
 }
 
-.settings div ul li input:checked + label{
+.settings input:checked + label {
   color: var(--p1);
   border-color: var(--p1);
 }
 
-.settings div ul li label:hover {
+.settings input:enabled:not(:checked) + label:hover {
   color: var(--p2);
   border-color: var(--p2);
 }
 
-.settings input[type="radio"]:focus-visible + label {
+.settings input:enabled:focus-visible + label {
   outline: 2px solid var(--p2);
   outline-offset: 3px;
 }

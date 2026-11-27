@@ -1,4 +1,4 @@
-.main-home {
+.home {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -8,39 +8,37 @@
   position: relative;
 }
 
-.main-home p {
+.home p {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
+  padding-block: 2rem 2.5rem;
   flex: 1;
 }
 
-.main-home:not(.pending) p {
+.home:not(.pending) p {
   border-bottom: 1px solid var(--n2);
 }
 
-.main-home:not(.pending) .home-bottom {
+.home:not(.pending) .bottom {
   display: flex;
-  align-items: center;
   justify-content: center;
   padding-top: 1rem;
 }
 
-.main-home:not(.pending) .pending-content {
+.home:not(.pending) .pending-content {
   display: none;
 }
 
-.main-home.pending p {
+.home.pending p {
   filter: blur(4px);
 }
 
-.main-home.pending .home-bottom {
+.home.pending .bottom {
   display: none;
 }
 
-.main-home.pending .pending-content {
+.home.pending .pending-content {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -48,6 +46,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
   gap: 1rem;
 }
