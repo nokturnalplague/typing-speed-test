@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Typing Speed Test</title>
-  <link rel="shortcut icon" href="./src/pictures/favicon-32x32.png" type="image/x-icon">
+  <link rel="icon" href="./src/pictures/favicon-32x32.png" type="image/png">
 
-  <link rel="preload" href="./src/styles/main.css" as="style">
   <link rel="stylesheet" href="./src/styles/main.css">
 
-  <script type="module" src="./src/scripts/main.js" defer></script>
+  <script type="module" src="./src/scripts/main.js"></script>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
       <img src="./src/pictures/logo-large.svg" alt="Typing Speed Test" width="267" height="40">
     </div>
     <div class="best">
-      <img src="./src/pictures/icon-personal-best.svg" width="21" height="18">
+      <img src="./src/pictures/icon-personal-best.svg" width="21" height="18" alt="">
       <span class="regular s n1">Personal Best: <span class="regular s n0" id="best"></span></span>
     </div>
   </header>
@@ -32,8 +31,8 @@
         <span class="regular m n1">Time: <span class="bold m n0" id="time"></span></span>
       </div>
       <div class="settings separator">
-        <div class="difficulty">
-          <span class="regular s n1">Difficulty:</span>
+        <div class="difficulty" id="difficulty" role="radiogroup" aria-labelledby="difficulty-title">
+          <span class="regular s n1" id="difficulty-title">Difficulty:</span>
           <ul>
             <li>
               <input type="radio" name="difficulty" id="easy">
@@ -49,8 +48,8 @@
             </li>
           </ul>
         </div>
-        <div class="mode">
-          <span class="regular s n1">Mode:</span>
+        <div class="mode" id="mode" role="radiogroup" aria-labelledby="mode-title">
+          <span class="regular s n1" id="mode-title">Mode:</span>
           <ul>
             <li>
               <input type="radio" name="mode" id="60s">
@@ -67,7 +66,7 @@
     <div class="main-home pending">
       <p class="regular l n1" id="text"></p>
       <div class="home-bottom">
-        <span class="button-1 medium m n0" tabindex="0">Restart Test <img src="./src/pictures/icon-restart.svg"></span>
+        <button class="button-1 medium m n0" onclick="window.location.reload()">Restart Test <img src="./src/pictures/icon-restart.svg" alt=""></button>
       </div>
       <div class="pending-content">
         <button class="button-3 medium m n0">Start Typing Test</button>
@@ -76,7 +75,7 @@
     </div>
   </main>
   <footer class="footer">
-    <span class="regular s n1">Desenvolvido por <a href="https://www.linkedin.com/in/nathalia-dagort-ferlin/">Nathália Dagort Ferlin</a>.</span>
+    <span class="regular s n1">Developed by <a href="https://www.linkedin.com/in/nathalia-dagort-ferlin/">Nathália Dagort Ferlin</a>.</span>
   </footer>
 </body>
 

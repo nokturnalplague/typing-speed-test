@@ -23,6 +23,7 @@ export function changeMain(page) {
 
   const icon = document.createElement('img');
 
+  icon.alt = ""
   icon.addEventListener('load', () => {
     icon.width = icon.naturalWidth;
     icon.height = icon.naturalHeight;
@@ -43,51 +44,55 @@ export function changeMain(page) {
 
   /* STATS */
 
-  const stats = document.createElement('div');
-  stats.classList.add('stats');
+  function createStats() {
+    const stats = document.createElement('div');
+    stats.classList.add('stats');
 
-  const statsUl = document.createElement('ul');
-  stats.appendChild(statsUl);
+    const statsUl = document.createElement('ul');
+    stats.appendChild(statsUl);
 
-  const statsLi = document.createElement('li');
-  statsLi.classList.add('regular', 'm', 'n1');
-  const liSpan = document.createElement('span');
-  liSpan.classList.add('medium', 'l', 'n0');
+    const statsLi = document.createElement('li');
+    statsLi.classList.add('regular', 'm', 'n1');
+    const liSpan = document.createElement('span');
+    liSpan.classList.add('medium', 'l', 'n0');
 
-  const wpmLi = statsLi.cloneNode();
-  const wpmEl = liSpan.cloneNode();
-  wpmEl.id = 'wpm';
-  wpmEl.innerText = wpm ? `${wpm}` : '0';
-  wpmLi.append('WPM: ', wpmEl);
+    const wpmLi = statsLi.cloneNode();
+    const wpmEl = liSpan.cloneNode();
+    wpmEl.id = 'wpm';
+    wpmEl.innerText = wpm ? `${wpm}` : '0';
+    wpmLi.append('WPM: ', wpmEl);
 
-  const accLi = statsLi.cloneNode();
-  const accEl = liSpan.cloneNode();
-  accEl.id = 'acc';
-  accEl.innerText = acc ? `${acc}%` : '0%';
-  accLi.append('Accuracy: ', accEl);
+    const accLi = statsLi.cloneNode();
+    const accEl = liSpan.cloneNode();
+    accEl.id = 'acc';
+    accEl.innerText = acc ? `${acc}%` : '0%';
+    accLi.append('Accuracy: ', accEl);
 
-  const charLi = statsLi.cloneNode();
-  const charEl = liSpan.cloneNode();
-  const charRgtEl = document.createElement('span');
-  charRgtEl.id = 'right';
-  charRgtEl.classList.add('grn');
-  charRgtEl.innerText = right ? right : '0';
-  const charLftEl = document.createElement('span');
-  charLftEl.id = 'wrong';
-  charLftEl.classList.add('red');
-  charLftEl.innerText = wrong ? wrong : '0';
-  charEl.append(charRgtEl, '/', charLftEl);
-  charLi.append('Characters: ', charEl);
+    const charLi = statsLi.cloneNode();
+    const charEl = liSpan.cloneNode();
+    const charRgtEl = document.createElement('span');
+    charRgtEl.id = 'right';
+    charRgtEl.classList.add('grn');
+    charRgtEl.innerText = right ? right : '0';
+    const charLftEl = document.createElement('span');
+    charLftEl.id = 'wrong';
+    charLftEl.classList.add('red');
+    charLftEl.innerText = wrong ? wrong : '0';
+    charEl.append(charRgtEl, '/', charLftEl);
+    charLi.append('Characters: ', charEl);
 
-  statsUl.append(wpmLi, accLi, charLi);
+    statsUl.append(wpmLi, accLi, charLi);
+
+    return stats;
+  }
 
   /* BUTTON */
 
   const button = document.createElement('button');
   button.classList.add('button-2', 'medium', 'm', 'n4');
-  button.tabIndex = 0;
 
   const buttonImg = document.createElement('img');
+  buttonImg.alt = ""
   buttonImg.src = './src/pictures/icon-restart.svg';
 
   if (page === 'err' || page === 'rslt') {
@@ -112,7 +117,6 @@ export function changeMain(page) {
       textTitle.innerText = 'Something Went Wrong!';
       textQuote.innerText =
         "We couldn't load your typing challenge. Give it another try!";
-      resultContent.append(icon, text, button);
       break;
     case 'frst':
       main.classList.add('stars');
@@ -120,7 +124,6 @@ export function changeMain(page) {
       textTitle.innerText = 'Baseline Established!';
       textQuote.innerText =
         "You've set the bar. Now the real challenge begins — time to beat it.";
-      resultContent.append(icon, text, stats, button);
       break;
     case 'nwpb':
       main.classList.add('confetti');
@@ -128,16 +131,20 @@ export function changeMain(page) {
       textTitle.innerText = 'High Score Smashed!';
       textQuote.innerText =
         "You're getting faster. That was incredible typing.";
-      resultContent.append(icon, text, stats, button);
       break;
     case 'rslt':
       main.classList.add('stars');
       icon.src = './src/pictures/icon-completed.svg';
       textTitle.innerText = 'Test Complete!';
       textQuote.innerText = 'Solid run. Keep pushing to beat your high score.';
-      resultContent.append(icon, text, stats, button);
       break;
   }
+
+  resultContent.append(icon, text);
+  if (page === 'frst' || page === 'nwpb' || page === 'rslt') {
+    resultContent.appendChild(createStats());
+  }
+  resultContent.appendChild(button);
 
   main.replaceChildren(resultContent, lastDiv);
 }

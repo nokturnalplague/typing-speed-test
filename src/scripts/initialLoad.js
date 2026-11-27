@@ -2,7 +2,6 @@ import { changeMain } from './changeMain.js';
 
 let best, wpm, acc;
 
-const mainHome = document.querySelector('.main-home');
 const bestEl = document.querySelector('#best');
 bestEl.innerText = best ? `${best} WPM` : '-- WPM';
 
@@ -49,10 +48,7 @@ if (data) {
   function updateTime(id) {
     switch (id) {
       case '60s':
-        timeEl.innerText = '0:60';
-        break;
-      case 'pass':
-        timeEl.innerText = '0:00';
+        timeEl.innerText = '1:00';
         break;
       default:
         timeEl.innerText = '0:00';
@@ -61,17 +57,19 @@ if (data) {
 
   /* SETTINGS */
 
-  const difficulties = document.querySelectorAll('.difficulty ul li');
-  const modes = document.querySelectorAll('.mode ul li');
+  const difficulties = document.querySelectorAll(
+    '.difficulty input[type="radio"]',
+  );
+  const modes = document.querySelectorAll('.mode input[type="radio"]');
 
   function settingsActive(setting, callback) {
     if (setting.length) {
-      const initial = setting[0].querySelector('input');
+      const initial = setting[0];
       initial.checked = true;
       callback(initial.id);
 
       setting.forEach((item) => {
-        item.querySelector('input').addEventListener('change', (e) => {
+        item.addEventListener('change', (e) => {
           callback(e.currentTarget.id);
         });
       });
