@@ -35,21 +35,36 @@
         <div class="difficulty">
           <span class="regular s n1">Difficulty:</span>
           <ul>
-            <li class="regular s n0" id="easy" tabindex="0">Easy</li>
-            <li class="regular s n0" id="medium" tabindex="0">Medium</li>
-            <li class="regular s n0" id="hard" tabindex="0">Hard</li>
+            <li>
+              <input type="radio" name="difficulty" id="easy">
+              <label for="easy" class="regular s n0">Easy</label>
+            </li>
+            <li>
+              <input type="radio" name="difficulty" id="medium">
+              <label for="medium" class="regular s n0">Medium</label>
+            </li>
+            <li>
+              <input type="radio" name="difficulty" id="hard">
+              <label for="hard" class="regular s n0">Hard</label>
+            </li>
           </ul>
         </div>
         <div class="mode">
           <span class="regular s n1">Mode:</span>
           <ul>
-            <li class="regular s n0" id="60s" tabindex="0">Timed (60s)</li>
-            <li class="regular s n0" id="pass" tabindex="0">Passage</li>
+            <li>
+              <input type="radio" name="mode" id="60s">
+              <label for="60s" class="regular s n0">Timed (60s)</label>
+            </li>
+            <li>
+              <input type="radio" name="mode" id="pass">
+              <label for="pass" class="regular s n0">Passage</label>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="main-home pending@">
+    <div class="main-home pending">
       <p class="regular l n1" id="text"></p>
       <div class="home-bottom">
         <span class="button-1 medium m n0" tabindex="0">Restart Test <img src="./src/pictures/icon-restart.svg"></span>

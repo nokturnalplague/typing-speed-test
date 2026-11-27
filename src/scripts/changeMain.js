@@ -5,11 +5,11 @@ nwpb = new personal best
 rslt = result
 */
 
-let wpm, acc, right, wrong;
+let best, wpm, acc, right, wrong;
 
 export function changeMain(page) {
   const bestEl = document.querySelector('#best');
-  bestEl.innerText = wpm ? `${best} WPM` : '-- WPM';
+  bestEl.innerText = best ? `${best} WPM` : '-- WPM';
 
   const main = document.querySelector('main');
   main.classList.add('container', 'result');
@@ -92,7 +92,7 @@ export function changeMain(page) {
 
   if (page === 'err' || page === 'rslt') {
     button.append('Try Again', buttonImg);
-  } else {
+  } else if (page === 'frst' || page === 'nwpb') {
     button.append('Beat This Score', buttonImg);
   }
 

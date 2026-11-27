@@ -49,3 +49,8 @@ main {
   box-sizing: border-box;
   width: 100%;
 }
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}

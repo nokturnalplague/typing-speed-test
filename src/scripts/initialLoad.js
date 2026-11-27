@@ -2,16 +2,15 @@ import { changeMain } from './changeMain.js';
 
 let best, wpm, acc;
 
+const mainHome = document.querySelector('.main-home');
 const bestEl = document.querySelector('#best');
-bestEl.innerText = wpm ? `${best} WPM` : '-- WPM';
+bestEl.innerText = best ? `${best} WPM` : '-- WPM';
 
 /* TEXT */
 
 async function getData() {
   try {
-    const response = await fetch(
-      new URL('../data/data.json', import.meta.url),
-    );
+    const response = await fetch(new URL('../data/data.json', import.meta.url));
 
     if (!response.ok) {
       throw new Error(response.status);
@@ -67,20 +66,14 @@ if (data) {
 
   function settingsActive(setting, callback) {
     if (setting.length) {
-      const initial = setting[0];
-      initial.classList.add('active');
-      callback?.(initial.id);
-
-      function activeOption(e) {
-        setting.forEach((item) => {
-          item.classList.remove('active');
-        });
-        e.currentTarget.classList.add('active');
-        callback?.(e.currentTarget.id);
-      }
+      const initial = setting[0].querySelector('input');
+      initial.checked = true;
+      callback(initial.id);
 
       setting.forEach((item) => {
-        item.addEventListener('click', activeOption);
+        item.querySelector('input').addEventListener('change', (e) => {
+          callback(e.currentTarget.id);
+        });
       });
     }
   }
