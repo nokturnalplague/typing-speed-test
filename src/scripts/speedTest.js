@@ -54,8 +54,6 @@ function speedTest() {
 
       if (activeMode === '60s') {
         timeValue = Math.max(0, Math.ceil(60 - time));
-      } else if (activeMode === '120s') {
-        timeValue = Math.max(0, Math.ceil(120 - time));
       } else {
         timeValue = Math.floor(time);
       }
@@ -76,8 +74,6 @@ function speedTest() {
       }
 
       if (activeMode === '60s' && time >= 60) {
-        finishTest();
-      } else if (activeMode === '120s' && time >= 120) {
         finishTest();
       }
     }, 1000);

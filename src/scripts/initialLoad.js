@@ -58,9 +58,6 @@ async function initialLoad() {
       case '60s':
         timeEl.innerText = '1:00';
         break;
-      case '120s':
-        timeEl.innerText = '2:00';
-        break;
       default:
         timeEl.innerText = '0:00';
     }
