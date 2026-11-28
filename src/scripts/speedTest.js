@@ -35,6 +35,8 @@ function speedTest() {
 
       if (activeMode === '60s') {
         timeValue = Math.max(0, Math.ceil(60 - time));
+      } else if (activeMode === '120s') {
+        timeValue = Math.max(0, Math.ceil(120 - time));
       } else {
         timeValue = Math.floor(time);
       }
@@ -45,6 +47,8 @@ function speedTest() {
       timeEl.innerText = `${minutes}:${seconds}`;
 
       if (activeMode === '60s' && time >= 60) {
+        finishTest(Array.from(input.value));
+      } else if (activeMode === '120s' && time >= 120) {
         finishTest(Array.from(input.value));
       }
     }, 100);
@@ -107,9 +111,9 @@ function speedTest() {
     activeMode = document.querySelector('.mode input:checked').id;
 
     input.focus();
-    input.addEventListener('input', timer, { once: true });
     input.addEventListener('input', changeColor);
     input.addEventListener('selectionchange', changeColor);
+    timer();
     changeColor();
   }
 

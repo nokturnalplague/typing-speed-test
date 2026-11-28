@@ -23,8 +23,7 @@ async function initialLoad() {
     return false;
   }
 
-  // !!!
-  let best;
+  let best, wpm, acc;
 
   const bestEl = document.querySelector('#best');
   bestEl.innerText = best ? `${best} WPM` : '-- WPM';
@@ -44,12 +43,21 @@ async function initialLoad() {
 
   /* STATS */
 
+  const wpmEl = document.querySelector('#wpm');
+  wpmEl.innerText = wpm ? wpm : '0';
+
+  const accEl = document.querySelector('#acc');
+  accEl.innerText = acc ? `${acc}%` : '0%';
+
   const timeEl = document.querySelector('#time');
 
   function updateTime(id) {
     switch (id) {
       case '60s':
         timeEl.innerText = '1:00';
+        break;
+      case '120s':
+        timeEl.innerText = '2:00';
         break;
       default:
         timeEl.innerText = '0:00';
