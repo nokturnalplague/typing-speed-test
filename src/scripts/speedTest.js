@@ -6,7 +6,7 @@ function speedTest() {
   const settings = document.querySelectorAll('.settings input[type="radio"]');
   const input = document.querySelector('#value');
 
-  const wpmEL = document.querySelector('#wpm');
+  const wpmEl = document.querySelector('#wpm');
   const accEl = document.querySelector('#acc');
   const timeEl = document.querySelector('#time');
 
@@ -16,11 +16,18 @@ function speedTest() {
   let text, textArray, textLen;
 
   let started, interval;
+  let right, wrong, typed;
 
-  function finishTest(inputArray) {
+  function finishTest() {
     input.disabled = true;
+    input.removeEventListener('input', countAttempts);
     input.removeEventListener('input', changeColor);
     input.removeEventListener('selectionchange', changeColor);
+
+    const acc = calculateAcc(right, wrong);
+    const wpm = calculateWpm(typed, time);
+
+    // setStats(right, wrong, acc, wpm);
 
     clearInterval(interval);
   }
@@ -46,21 +53,54 @@ function speedTest() {
 
       timeEl.innerText = `${minutes}:${seconds}`;
 
+      if (!(activeMode === 'pass')) {
+        timeEl.style.color = 'var(--yel)';
+        if (timeValue <= 10) {
+          timeEl.style.color = 'var(--red)';
+        }
+      }
+
       if (activeMode === '60s' && time >= 60) {
-        finishTest(Array.from(input.value));
+        finishTest();
       } else if (activeMode === '120s' && time >= 120) {
-        finishTest(Array.from(input.value));
+        finishTest();
       }
     }, 100);
+  }
+
+  function countAttempts(e) {
+    if (e.data === null) return;
+
+    const position = input.selectionStart - 1;
+
+    if (e.data === textArray[position]) {
+      right++;
+    } else {
+      wrong++;
+    }
+
+    typed = right + wrong;
   }
 
   function changeColor() {
     const inputValue = input.value;
     const inputArray = Array.from(inputValue);
+    const inputLen = inputArray.length;
 
     const time = (performance.now() - started) / 1000;
 
-    // const { right, wrong, acc } = calculateAcc(inputArray, textArray);
+    const acc = calculateAcc(right, wrong);
+    accEl.innerText = `${acc}%`;
+    if (acc === 100) {
+      accEl.style.color = 'var(--grn)';
+    } else if (acc < 50) {
+      accEl.style.color = 'var(--red)';
+    } else {
+      accEl.style.color = 'var(--yel)';
+    }
+
+    const wpm = calculateWpm(typed, time);
+    wpmEl.innerText = wpm;
 
     const coloredText = textArray.map((char, i) => {
       const span = document.createElement('span');
@@ -71,7 +111,7 @@ function speedTest() {
         span.classList.add('caret');
       }
 
-      if (i >= inputArray.length) {
+      if (i >= inputLen) {
         return span;
       }
 
@@ -89,8 +129,8 @@ function speedTest() {
     });
 
     textEl.replaceChildren(...coloredText);
-    if (inputArray.length >= textLen) {
-      finishTest(inputArray);
+    if (inputLen >= textLen) {
+      finishTest();
     }
   }
 
@@ -110,7 +150,12 @@ function speedTest() {
 
     activeMode = document.querySelector('.mode input:checked').id;
 
+    right = 0;
+    wrong = 0;
+    typed = 0;
+
     input.focus();
+    input.addEventListener('input', countAttempts);
     input.addEventListener('input', changeColor);
     input.addEventListener('selectionchange', changeColor);
     timer();
