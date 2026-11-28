@@ -12,6 +12,16 @@
   margin-left: 0.5rem;
 }
 
+.top .stats #wpm {
+  display: inline-block;
+  min-width: 3ch;
+}
+
+.top .stats #acc {
+  display: inline-block;
+  min-width: 4ch;
+}
+
 .top .settings {
   display: flex;
 

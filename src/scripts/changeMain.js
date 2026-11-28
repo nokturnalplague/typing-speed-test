@@ -5,9 +5,13 @@ nwpb = new personal best
 rslt = result
 */
 
-let best, wpm, acc, right, wrong;
-
 function changeMain(page) {
+  const best = localStorage.getItem('best');
+  const wpm = localStorage.getItem('wpm');
+  const acc = localStorage.getItem('acc');
+  const right = localStorage.getItem('right');
+  const wrong = localStorage.getItem('wrong');
+
   const bestEl = document.querySelector('#best');
   bestEl.innerText = best ? `${best} WPM` : '-- WPM';
 

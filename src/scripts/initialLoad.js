@@ -23,7 +23,9 @@ async function initialLoad() {
     return false;
   }
 
-  let best, wpm, acc;
+  const best = localStorage.getItem('best');
+  const wpm = localStorage.getItem('wpm');
+  const acc = localStorage.getItem('acc');
 
   const bestEl = document.querySelector('#best');
   bestEl.innerText = best ? `${best} WPM` : '-- WPM';

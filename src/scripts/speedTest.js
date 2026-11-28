@@ -1,3 +1,4 @@
+import { changeMain } from './changeMain.js';
 import { calculateAcc, calculateWpm, setStats } from './handleStats.js';
 
 function speedTest() {
@@ -24,11 +25,22 @@ function speedTest() {
     input.removeEventListener('input', changeColor);
     input.removeEventListener('selectionchange', changeColor);
 
+    const time = (performance.now() - started) / 1000;
     const acc = calculateAcc(right, wrong);
     const wpm = calculateWpm(typed, time);
+    const best = localStorage.getItem('best');
 
-    // setStats(right, wrong, acc, wpm);
+    let page;
+    if (best === null) {
+      page = 'frst';
+    } else if (wpm > best) {
+      page = 'nwpb';
+    } else {
+      page = 'rslt';
+    }
 
+    setStats(right, wrong, acc, wpm);
+    changeMain(page);
     clearInterval(interval);
   }
 
@@ -48,6 +60,9 @@ function speedTest() {
         timeValue = Math.floor(time);
       }
 
+      const wpm = calculateWpm(typed, time);
+      wpmEl.innerText = wpm;
+
       const minutes = Math.floor(timeValue / 60);
       const seconds = String(timeValue % 60).padStart(2, '0');
 
@@ -65,7 +80,7 @@ function speedTest() {
       } else if (activeMode === '120s' && time >= 120) {
         finishTest();
       }
-    }, 100);
+    }, 1000);
   }
 
   function countAttempts(e) {
@@ -98,9 +113,6 @@ function speedTest() {
     } else {
       accEl.style.color = 'var(--yel)';
     }
-
-    const wpm = calculateWpm(typed, time);
-    wpmEl.innerText = wpm;
 
     const coloredText = textArray.map((char, i) => {
       const span = document.createElement('span');
