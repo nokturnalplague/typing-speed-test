@@ -1,46 +1,71 @@
-export function speedTest() {
+import { calculateAcc, calculateWpm, setStats } from './handleStats.js';
+
+function speedTest() {
   const home = document.querySelector('.home');
   const startBtn = document.querySelector('#start');
   const settings = document.querySelectorAll('.settings input[type="radio"]');
   const input = document.querySelector('#value');
 
+  const wpmEL = document.querySelector('#wpm');
+  const accEl = document.querySelector('#acc');
+  const timeEl = document.querySelector('#time');
+
+  let activeMode;
+
   const textEl = document.querySelector('#text');
-  const text = textEl.innerText;
-  const textArray = Array.from(text);
-  const textLen = textArray.length;
+  let text, textArray, textLen;
+
+  let started, interval;
 
   function finishTest(inputArray) {
-    input.removeEventListener('input', changeColor);
     input.disabled = true;
+    input.removeEventListener('input', changeColor);
+    input.removeEventListener('selectionchange', changeColor);
 
-    // !!
-    let time = '0:60';
-
-    handleStats(inputArray, time);
-  }
-
-  function handleStats(inputArray, time) {
-    //WPM
-    const len = parseInt(inputArray.length, 10);
-    const [minutes, seconds] = time.split(':').map(Number);
-    const totalSeconds = minutes * 60 + seconds;
-    const wpm = len / 5 / (totalSeconds / 60);
-
-    // wpm, acc, best, right, wrong
-    // textArray
+    clearInterval(interval);
   }
 
   function timer() {
-    //
+    started = performance.now();
+
+    interval = setInterval(() => {
+      const time = (performance.now() - started) / 1000;
+
+      let timeValue;
+
+      if (activeMode === '60s') {
+        timeValue = Math.max(0, Math.ceil(60 - time));
+      } else {
+        timeValue = Math.floor(time);
+      }
+
+      const minutes = Math.floor(timeValue / 60);
+      const seconds = String(timeValue % 60).padStart(2, '0');
+
+      timeEl.innerText = `${minutes}:${seconds}`;
+
+      if (activeMode === '60s' && time >= 60) {
+        finishTest(Array.from(input.value));
+      }
+    }, 100);
   }
 
   function changeColor() {
     const inputValue = input.value;
     const inputArray = Array.from(inputValue);
 
-    const coloredText = textArray.map((char, i, text) => {
+    const time = (performance.now() - started) / 1000;
+
+    // const { right, wrong, acc } = calculateAcc(inputArray, textArray);
+
+    const coloredText = textArray.map((char, i) => {
       const span = document.createElement('span');
       span.innerText = char;
+
+      const caretPosition = input.selectionStart;
+      if (i === caretPosition) {
+        span.classList.add('caret');
+      }
 
       if (i >= inputArray.length) {
         return span;
@@ -66,16 +91,30 @@ export function speedTest() {
   }
 
   function beginTest() {
+    if (!home.classList.contains('pending')) {
+      return;
+    }
+
     home.classList.remove('pending');
     settings.forEach((setting) => {
       setting.disabled = true;
     });
 
+    text = textEl.textContent;
+    textArray = Array.from(text);
+    textLen = textArray.length;
+
+    activeMode = document.querySelector('.mode input:checked').id;
+
     input.focus();
+    input.addEventListener('input', timer, { once: true });
     input.addEventListener('input', changeColor);
-    input.addEventListener('keydown', timer, { once: true });
+    input.addEventListener('selectionchange', changeColor);
+    changeColor();
   }
 
   home.addEventListener('click', beginTest);
   startBtn.addEventListener('click', beginTest);
 }
+
+export { speedTest };

@@ -15,7 +15,7 @@ async function getData() {
   }
 }
 
-export async function initialLoad() {
+async function initialLoad() {
   const data = await getData();
 
   if (!data) {
@@ -23,7 +23,8 @@ export async function initialLoad() {
     return false;
   }
 
-  let best, wpm, acc;
+  // !!!
+  let best;
 
   const bestEl = document.querySelector('#best');
   bestEl.innerText = best ? `${best} WPM` : '-- WPM';
@@ -39,17 +40,9 @@ export async function initialLoad() {
 
     const text = passages[number].text;
     textEl.innerText = text;
-    // !!
-    // textEl.innerText = 'agape'
   }
 
   /* STATS */
-
-  const wpmEl = document.querySelector('#wpm');
-  wpmEl.innerText = wpm ? wpm : '0';
-
-  const accEl = document.querySelector('#acc');
-  accEl.innerText = acc ? `${acc}%` : '0%';
 
   const timeEl = document.querySelector('#time');
 
@@ -89,3 +82,5 @@ export async function initialLoad() {
 
   return true;
 }
+
+export { initialLoad };

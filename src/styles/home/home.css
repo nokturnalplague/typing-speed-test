@@ -18,6 +18,12 @@
   letter-spacing: 0.025em;
 }
 
+.home p span.caret {
+  /* box-shadow: inset 2px 0 var(--p1); */
+  background: #95959759;
+  border-radius: .1225rem;
+}
+
 .home textarea {
   position: absolute;
   width: 1px;

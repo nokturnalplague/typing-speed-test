@@ -7,7 +7,7 @@ rslt = result
 
 let best, wpm, acc, right, wrong;
 
-export function changeMain(page) {
+function changeMain(page) {
   const bestEl = document.querySelector('#best');
   bestEl.innerText = best ? `${best} WPM` : '-- WPM';
 
@@ -148,3 +148,5 @@ export function changeMain(page) {
 
   main.replaceChildren(resultContent, lastDiv);
 }
+
+export { changeMain };
